@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantraCounter", "MantraCounter\MantraCounter.csproj", "{91412834-A307-494B-8B53-28823DE5B523}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		appicon.svg = appicon.svg
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91412834-A307-494B-8B53-28823DE5B523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91412834-A307-494B-8B53-28823DE5B523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91412834-A307-494B-8B53-28823DE5B523}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{91412834-A307-494B-8B53-28823DE5B523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91412834-A307-494B-8B53-28823DE5B523}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0B93B2A-1A1A-4937-84C2-1FD5397C0C4F}
+	EndGlobalSection
+EndGlobal

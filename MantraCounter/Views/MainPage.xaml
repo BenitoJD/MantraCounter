@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:MantraCounter.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MantraCounter.Views.MainPage"
+             x:DataType="viewmodels:MainViewModel"
+             Title="Mantra Tracker">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="20">
+
+          
+            <Border Padding="15"
+                    Stroke="LightGray"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Your Mantra" FontAttributes="Bold" />
+                    <Entry Text="{Binding MantraText}"
+                           Placeholder="e.g., I am peaceful"
+                           Keyboard="Text">
+                        <Entry.Behaviors>
+                            <toolkit:EventToCommandBehavior EventName="Unfocused" Command="{Binding SaveSettingsCommand}" />
+                        </Entry.Behaviors>
+                    </Entry>
+
+
+                    <Label Text="Daily Goal" FontAttributes="Bold" Margin="0,10,0,0"/>
+                    <Entry Text="{Binding DailyGoal}"
+                           Placeholder="e.g., 108"
+                           Keyboard="Numeric">
+                        <Entry.Behaviors>
+                            <toolkit:EventToCommandBehavior EventName="Unfocused" Command="{Binding SaveSettingsCommand}" />
+                        </Entry.Behaviors>
+                    </Entry>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Padding="25"
+                    Stroke="CornflowerBlue"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 10">
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                            Offset="5,5"
+                            Radius="10"
+                            Opacity="0.3" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="20" HorizontalOptions="Center">
+                    <Label Text="{Binding MantraText}"
+                           FontSize="20"
+                           FontAttributes="Italic"
+                           HorizontalTextAlignment="Center" />
+
+                  
+                    <Border HeightRequest="200"
+        WidthRequest="200"
+        Stroke="DarkBlue"
+        StrokeThickness="5"
+        BackgroundColor="CornflowerBlue"
+        StrokeShape="Ellipse">
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding IncrementCountCommand}" />
+                        </Border.GestureRecognizers>
+
+                        <Grid RowDefinitions="*,*" RowSpacing="5" VerticalOptions="Center">
+                            <Label Grid.Row="0"
+               Text="{Binding CurrentCount}"
+               TextColor="White"
+               FontSize="60"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               VerticalOptions="End" />
+
+                            <Label Grid.Row="1"
+               Text="Tap to count"
+               TextColor="White"
+               FontSize="16"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+                        </Grid>
+                    </Border>
+
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10" VerticalOptions="Center">
+                        <ProgressBar Grid.Column="0" Progress="{Binding Progress}" />
+                        <Label Grid.Column="1">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding CurrentCount}"/>
+                                    <Span Text="/"/>
+                                    <Span Text="{Binding DailyGoal}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Grid>
+
+                    <Label Text="🎉 Goal Reached for Today! 🎉"
+                           IsVisible="{Binding IsGoalMet}"
+                           FontSize="18"
+                           TextColor="Green"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+            </Border>
+            <Border Padding="15"
+        Margin="0,20,0,0"
+        Stroke="Gray"
+        StrokeThickness="1"
+        StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Actions"
+               FontSize="16"
+               FontAttributes="Bold"/>
+
+                    <!-- We use a Grid to make the buttons evenly sized -->
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+
+                        <!-- Button 1: Reset Today's Count -->
+                        <Button Grid.Column="0"
+                    Text="Reset Today's Count"
+                    Command="{Binding ResetTodaysCountCommand}"
+                    BackgroundColor="LightGray"
+                    TextColor="Black"/>
+
+                        <!-- Button 2: Reset All Data (Destructive Action) -->
+                        <!-- We make this button red to warn the user it's a dangerous action. -->
+                        <Button Grid.Column="1"
+                    Text="Reset All Data"
+                    Command="{Binding ResetAllDataCommand}"
+                    BackgroundColor="IndianRed"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
